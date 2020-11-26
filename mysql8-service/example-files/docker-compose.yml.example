@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+# Database mysql 8
+  db_8:
+    image: mysql/mysql-server
+    container_name: DB_mysql8
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+#      MYSQL_DATABASE: ${MYSQL_DATABASE}
+#      MYSQL_USER: ${MYSQL_USER}
+#      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - ${PORT_DATABASE}:3306
+    volumes:
+      - "./data:/var/lib/mysql"
+      - "./etc/mysql/my.cnf:/etc/mysql/my.cnf"
+    networks:
+      laravel-net:
+
+# Networks
+networks:
+  laravel-net:
+    name: test-net
+  reverse-net:
+    name: reverse-net
