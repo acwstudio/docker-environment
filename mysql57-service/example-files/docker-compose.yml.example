@@ -23,5 +23,3 @@ services:
 networks:
   laravel-net:
     name: ${APP_NAME}-net
-#  reverse-net:
-#    name: reverse-net

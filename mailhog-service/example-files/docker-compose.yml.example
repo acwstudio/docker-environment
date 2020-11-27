@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+
+# **** fake mailer
+  mailhog:
+    image: mailhog/mailhog
+    container_name: ${APP_NAME}_mailer
+    ports:
+      - "${MAILHOG_HTTP_PORT}:8025"
+      - "${MAILHOG_SMPT_PORT}:1025"
+    restart: unless-stopped
+    networks:
+      laravel-net:
+
+# Networks
+networks:
+  laravel-net:
+    name: ${APP_NAME}-net

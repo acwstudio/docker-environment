@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  reverse:
+    container_name: reverse
+    hostname: reverse
+    restart: always
+    image: nginx:alpine
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./etc/nginx/conf.d/:/etc/nginx/conf.d
+      - ./etc/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./etc/ssl/private/:/etc/ssl/private
+    networks:
+      ${APP_NAME}-net:
+
+# Networks
+networks:
+  laravel-net:
+    name: ${APP_NAME}-net
