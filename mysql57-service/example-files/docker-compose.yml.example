@@ -4,15 +4,15 @@ services:
 # If connection refuse run cli command - alter USER 'root'@'localhost' identified by 'password'
   db_57:
     image: mysql:5.7
-    container_name: DB_mysql57
+    container_name: ${APP_NAME}_db57
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL57_ROOT_PASSWORD}
 #      MYSQL_DATABASE: ${MYSQL_DATABASE}
 #      MYSQL_USER: ${MYSQL_USER}
 #      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
-      - ${PORT_DATABASE}:3306
+      - ${MYSQL57_PORT}:3306
     volumes:
       - "./data:/var/lib/mysql"
       - "./etc/mysql/my.cnf:/etc/mysql/my.cnf"
@@ -22,6 +22,6 @@ services:
 # Networks
 networks:
   laravel-net:
-    name: test-net
-  reverse-net:
-    name: reverse-net
+    name: ${APP_NAME}-net
+#  reverse-net:
+#    name: reverse-net
