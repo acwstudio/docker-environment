@@ -17,6 +17,6 @@ services:
       ${APP_NAME}-net:
 
 # Networks
-networks:
-  laravel-net:
-    name: ${APP_NAME}-net
+  #networks:
+  #  services-net:
+  #      name: services-net

@@ -10,9 +10,9 @@ services:
       - "${MAILHOG_SMPT_PORT}:1025"
     restart: unless-stopped
     networks:
-      laravel-net:
+      services-net:
 
 # Networks
 networks:
-  laravel-net:
-    name: ${APP_NAME}-net
+  services-net:
+    name: services-net
