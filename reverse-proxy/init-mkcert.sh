@@ -28,4 +28,4 @@ echo "mkcert is already in use..."
 
 mkcert -key-file $(pwd)/etc/ssl/private/mkcert-key.pem -cert-file $(pwd)/etc/ssl/private/mkcert.pem $domains
 
-docker-compose --env-file ~/projects/docker-environment/.env up --force-recreate -d
+docker-compose --env-file ~/projects/docker-services/.env up --force-recreate -d
