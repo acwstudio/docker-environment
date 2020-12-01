@@ -1,24 +1,21 @@
 version: '3.7'
 services:
-# Database mysql 8
+  # Database mysql 8
   db_8:
     image: mysql/mysql-server
     container_name: ${APP_NAME}_db8
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL8_ROOT_PASSWORD}
-#      MYSQL_DATABASE: ${MYSQL8_DATABASE}
-#      MYSQL_USER: ${MYSQL8_USER}
-#      MYSQL_PASSWORD: ${MYSQL8_PASSWORD}
     ports:
       - ${MYSQL8_PORT}:3306
     volumes:
       - "./data:/var/lib/mysql"
       - "./etc/mysql/my.cnf:/etc/mysql/my.cnf"
     networks:
-      services-net:
+      - mysql8
 
 # Networks
 networks:
-  services-net:
-    name: services-net
+  mysql8:
+    name: mysql8

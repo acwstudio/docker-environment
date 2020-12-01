@@ -10,9 +10,9 @@ services:
       - "${MAILHOG_SMPT_PORT}:1025"
     restart: unless-stopped
     networks:
-      services-net:
+      - mailer
 
 # Networks
 networks:
-  services-net:
-    name: services-net
+  mailer:
+    name: mailer

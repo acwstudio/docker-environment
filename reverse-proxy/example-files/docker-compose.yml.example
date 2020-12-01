@@ -1,8 +1,9 @@
 version: '3.7'
 
+# Nginx reverse-proxy service
 services:
   reverse:
-    container_name: reverse
+    container_name: ${APP_NAME}_reverse
     hostname: reverse
     restart: always
     image: nginx:alpine
@@ -14,9 +15,9 @@ services:
       - ./etc/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./etc/ssl/private/:/etc/ssl/private
     networks:
-      ${APP_NAME}-net:
+      - proxy
 
 # Networks
-  #networks:
-  #  services-net:
-  #      name: services-net
+networks:
+  proxy:
+    name: proxy
