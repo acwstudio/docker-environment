@@ -5,7 +5,8 @@ source .env.ssl
 set +o allexport
 
 dir=$DIR
-domains=$DOMAINS
+# shellcheck disable=SC2153
+domains="$DOMAINS"
 
 if ! [ "$(ldconfig -p | grep libnss3)" ]; then
     echo "installing libnss3-tools..."
@@ -26,6 +27,6 @@ fi
 
 echo "mkcert is already in use..."
 
-mkcert -key-file $(pwd)/etc/ssl/private/mkcert-key.pem -cert-file $(pwd)/etc/ssl/private/mkcert.pem $domains
+mkcert -key-file "$(pwd)"/etc/ssl/private/mkcert-key.pem -cert-file "$(pwd)"/etc/ssl/private/mkcert.pem $domains
 
 docker-compose --env-file ~/projects/docker-services/.env up --force-recreate -d

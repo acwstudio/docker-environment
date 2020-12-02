@@ -20,4 +20,4 @@ services:
 # Networks
 networks:
   proxy:
-    name: proxy
+    external: true

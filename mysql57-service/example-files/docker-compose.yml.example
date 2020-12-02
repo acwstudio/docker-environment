@@ -1,7 +1,7 @@
 version: '3.7'
 services:
-  # Database mysql 5.7
-  # If connection refuse run cli command - alter USER 'root'@'localhost' identified by 'password'
+# Database mysql 5.7
+# If connection refuse run cli command - alter USER 'root'@'localhost' identified by 'password'
   db_57:
     image: mysql:5.7
     container_name: ${APP_NAME}_db57
@@ -19,4 +19,4 @@ services:
 # Networks
 networks:
   mysql57:
-    name: mysql57
+    external: true

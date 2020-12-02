@@ -18,4 +18,4 @@ services:
 # Networks
 networks:
   mysql8:
-    name: mysql8
+    external: true

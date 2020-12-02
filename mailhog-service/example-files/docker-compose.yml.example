@@ -15,4 +15,4 @@ services:
 # Networks
 networks:
   mailer:
-    name: mailer
+    external: true
