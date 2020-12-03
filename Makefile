@@ -24,4 +24,4 @@ runReverse:
 runReverseRemote:
 	docker network create proxy || true
 	cd ~/projects/docker-services/reverse-proxy-remote/ && \
-	~/projects/docker-services/reverse-proxy/init-letsencrypt.sh
+	~/projects/docker-services/reverse-proxy-remote/init-letsencrypt.sh
