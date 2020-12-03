@@ -3,7 +3,6 @@ version: '3.7'
 services:
   reverse:
     container_name: reverse
-    hostname: reverse
     restart: unless-stopped
     image: nginx:alpine
     ports:
@@ -20,6 +19,7 @@ services:
 
   certbot:
     image: certbot/certbot
+    container_name: certbot
     restart: unless-stopped
     volumes:
       - ./etc/certbot/conf:/etc/letsencrypt
