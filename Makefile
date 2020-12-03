@@ -20,3 +20,8 @@ runReverse:
 	docker network create proxy || true
 	cd ~/projects/docker-services/reverse-proxy/ && \
 	~/projects/docker-services/reverse-proxy/init-mkcert.sh
+
+runReverseRemote:
+	docker network create proxy || true
+	cd ~/projects/docker-services/reverse-proxy-remote/ && \
+	~/projects/docker-services/reverse-proxy/init-letsencrypt.sh
