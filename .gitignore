@@ -2,3 +2,4 @@
 .env
 docker-compose.yml
 /reverse-proxy/.env.ssl
+/letsencrypt-service/.env.ssl
