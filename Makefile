@@ -1,5 +1,5 @@
 runAll: runReverse runMailHog runMySQL8 runMySQL57
-runServices: runMailHog runMySQL8 runMySQL57
+runServices: runMailHog runMySQL8 runMySQL57 runRedis
 
 runMySQL8:
 	docker network create mysql8 || true
@@ -14,6 +14,11 @@ runMySQL57:
 runMailHog:
 	docker network create mailer || true
 	cd ~/projects/docker-services/mailhog-service/ && \
+    docker-compose --env-file ~/projects/docker-services/.env up -d
+
+runRedis:
+	docker network create redis-net || true
+	cd ~/projects/docker-services/redis-service/ && \
     docker-compose --env-file ~/projects/docker-services/.env up -d
 
 runReverse:

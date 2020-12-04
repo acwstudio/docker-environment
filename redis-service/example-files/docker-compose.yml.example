@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  # **** Redis needs production config
+  redis:
+    build:
+      context: ./etc/redis
+    container_name: ${APP_NAME}_redis
+    ports:
+      - "${REDIS_PORT}:6379"
+    volumes:
+      - "./data/redis:/data"
+    restart: unless-stopped
+    networks:
+      - redis-net
+
+# Networks
+networks:
+  redis-net:
+    external: true
