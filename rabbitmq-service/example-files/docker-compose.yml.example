@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: ${APP_NAME}_rabbitmq
+    volumes:
+#      - ./.docker/rabbitmq/etc/:/etc/rabbitmq/
+      - ./.docker/rabbitmq/data/:/var/lib/rabbitmq/
+      - ./.docker/rabbitmq/logs/:/var/log/rabbitmq/
+    environment:
+#      RABBITMQ_ERLANG_COOKIE: ${RABBITMQ_ERLANG_COOKIE}
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+    ports:
+      - ${{RABBIT_PORT}}:5672
+      - ${{RABBIT_MANAGEMENT_PORT}}:15672
