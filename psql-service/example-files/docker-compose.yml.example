@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+# Database postgresql
+  db_psql:
+    image: postgres
+    container_name: ${APP_NAME}_psql
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: ${PSQL_ROOT_PASSWORD}
+      POSTGRES_USER: ${PSQL_ROOT_USER}
+    ports:
+      - ${PSQL_PORT}:5432
+    volumes:
+      - "./data:/var/lib/postgresql/data"
+#      - "./etc/postgres.conf:/usr/local/etc/postgres/postgres.conf"
+    networks:
+      - psql
+
+# Networks
+networks:
+  psql:
+    external: true

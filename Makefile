@@ -11,6 +11,11 @@ runMySQL57:
 	cd ~/projects/docker-services/mysql57-service && \
 	docker-compose --env-file ~/projects/docker-services/.env up -d
 
+runPSQL:
+	docker network create psql || true
+	cd ~/projects/docker-services/psql-service && \
+	docker-compose --env-file ~/projects/docker-services/.env up -d
+
 runMailHog:
 	docker network create mailer || true
 	cd ~/projects/docker-services/mailhog-service/ && \
