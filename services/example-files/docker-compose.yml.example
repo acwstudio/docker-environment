@@ -1,0 +1,44 @@
+version: '3.7'
+services:
+  # Database mysql 8
+  mysql8:
+    image: mysql/mysql-server
+    container_name: ${PROJECT_NAME}_mysql8
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL8_ROOT_PASSWORD}
+    ports:
+      - ${MYSQL8_PORT}:3306
+    volumes:
+      - data_mysql8:/var/lib/mysql
+      - ./etc/mysql8/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - service-net
+
+  # Database mysql 5.7
+  # If connection refuse run cli command - alter USER 'root'@'localhost' identified by 'password'
+  mysql57:
+    image: mysql:5.7
+    container_name: ${PROJECT_NAME}_mysql57
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL57_ROOT_PASSWORD}
+    ports:
+      - ${MYSQL57_PORT}:3306
+    volumes:
+      - data_mysql57:/var/lib/mysql
+      - ./etc/mysql57/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - service-net
+
+# Volumes
+volumes:
+  data_mysql8:
+    driver: local
+  data_mysql57:
+    driver: local
+
+# Networks
+networks:
+  service-net:
+    name: service-net
