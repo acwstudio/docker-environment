@@ -31,6 +31,17 @@ services:
     networks:
       - service-net
 
+  # **** fake mailer
+  mailhog:
+    image: mailhog/mailhog
+    container_name: ${PROJECT_NAME}_mailer
+    ports:
+      - ${MAILHOG_HTTP_PORT}:8025
+      - ${MAILHOG_SMPT_PORT}:1025
+    restart: unless-stopped
+    networks:
+      - service-net
+
 # Volumes
 volumes:
   data_mysql8:
