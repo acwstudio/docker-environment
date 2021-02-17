@@ -23,6 +23,7 @@ services:
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL57_ROOT_PASSWORD}
+      LANG: ${MYSQL57_LOCALE}
     ports:
       - ${MYSQL57_PORT}:3306
     volumes:
