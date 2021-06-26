@@ -17,7 +17,7 @@ runPSQL:
 	docker-compose --env-file ~/projects/docker-services/.env up -d
 
 runMailHog:
-	docker network create mailer || true
+	docker network create mailhog || true
 	cd ~/projects/docker-services/mailhog-service/ && \
     docker-compose --env-file ~/projects/docker-services/.env up -d
 
