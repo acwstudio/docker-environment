@@ -3,13 +3,18 @@ runServices: runMailHog runMySQL8 runMySQL57 runRedis runRabbitMQ
 
 runMySQL8:
 	docker network create mysql8 || true
-	cd ~/projects/docker-services/mysql8-service && \
-	docker-compose --env-file ~/projects/docker-services/.env up -d
+	cd ./mysql8-service && \
+	docker-compose --env-file ../.env up -d
 
 runMySQL57:
 	docker network create mysql57 || true
-	cd ~/projects/docker-services/mysql57-service && \
-	docker-compose --env-file ~/projects/docker-services/.env up -d
+	cd ./mysql57-service && \
+	docker-compose --env-file ../.env up -d
+
+runphpMyAdmin:
+	#docker network create mysql57 || true
+	cd ./phpmyadmin-service && \
+	docker-compose --env-file ../.env up -d
 
 runPSQL:
 	docker network create psql || true
@@ -18,8 +23,8 @@ runPSQL:
 
 runMailHog:
 	docker network create mailhog || true
-	cd ~/projects/docker-services/mailhog-service/ && \
-    docker-compose --env-file ~/projects/docker-services/.env up -d
+	cd ./mailhog-service/ && \
+    docker-compose --env-file ../.env up -d
 
 runRedis:
 	docker network create redis-net || true
