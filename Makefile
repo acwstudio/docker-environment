@@ -1,6 +1,3 @@
-runAll: runReverse runMailHog runMySQL8 runMySQL57
-runServices: runMailHog runMySQL8 runMySQL57 runRedis runRabbitMQ
-
 runMySQL8:
 	docker network create mysql8 || true
 	cd ./mysql8-service && \
@@ -12,14 +9,13 @@ runMySQL57:
 	docker-compose --env-file ../.env up -d
 
 runphpMyAdmin:
-	#docker network create mysql57 || true
 	cd ./phpmyadmin-service && \
 	docker-compose --env-file ../.env up -d
 
 runPSQL:
 	docker network create psql || true
-	cd ~/projects/docker-services/psql-service && \
-	docker-compose --env-file ~/projects/docker-services/.env up -d
+	cd ./psql-service && \
+	docker-compose --env-file ../.env up -d
 
 runMailHog:
 	docker network create mailhog || true
@@ -28,20 +24,20 @@ runMailHog:
 
 runRedis:
 	docker network create redis-net || true
-	cd ~/projects/docker-services/redis-service/ && \
-    docker-compose --env-file ~/projects/docker-services/.env up -d
+	cd ./redis-service/ && \
+    docker-compose --env-file ../.env up -d
 
 runRabbitMQ:
 	docker network create rabbitmq-net || true
-	cd ~/projects/docker-services/rabbitmq-service/ && \
-    docker-compose --env-file ~/projects/docker-services/.env up -d
+	cd ./rabbitmq-service/ && \
+    docker-compose --env-file ../.env up -d
 
 runReverse:
 	docker network create proxy || true
-	cd ~/projects/docker-services/reverse-proxy/ && \
-	~/projects/docker-services/reverse-proxy/init-mkcert.sh
+	cd ./reverse-proxy/ && \
+	reverse-proxy/init-mkcert.sh
 
 runReverseRemote:
 	docker network create proxy || true
-	cd ~/projects/docker-services/reverse-proxy-remote/ && \
-	~/projects/docker-services/reverse-proxy-remote/init-letsencrypt.sh
+	cd ./reverse-proxy-remote/ && \
+	reverse-proxy-remote/init-letsencrypt.sh
