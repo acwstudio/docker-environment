@@ -5,7 +5,7 @@ services:
     image: phpmyadmin/phpmyadmin
     container_name: ${APP_NAME}_phpmyadmin
     ports:
-      - ${PHPMYADMIN8_PORT}:80
+      - ${PHPMYADMIN_PORT}:80
     restart: unless-stopped
     environment:
       PMA_HOST: ${PMA_HOSTS}
