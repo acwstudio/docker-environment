@@ -24,3 +24,11 @@ cat backup.sql | docker exec -i CONTAINER /usr/bin/mysql -uroot -proot DATABASE
 > CREATE USER 'root'@'%' IDENTIFIED BY 'root_password';
 > GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
 ```
+
+### How to reset the root password in MySQL 8.0.11?
+
+[resolution](https://stackoverflow.com/questions/50691977/how-to-reset-the-root-password-in-mysql-8-0-11)
+
+```bash
+> ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'yourpasswd';
+```
