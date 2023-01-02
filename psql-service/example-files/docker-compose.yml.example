@@ -2,7 +2,7 @@ version: '3.7'
 services:
 # Database postgresql
   db_psql:
-    image: postgres
+    image: postgres:14.1-alpine
     container_name: ${APP_NAME}_psql
     restart: unless-stopped
     environment:
