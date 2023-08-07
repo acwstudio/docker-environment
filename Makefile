@@ -22,6 +22,11 @@ runMailHog:
 	cd ./mailhog-service/ && \
     docker-compose --env-file ../.env up -d
 
+runMailPit:
+	docker network create mailpit || true
+	cd ./mailpit-service/ && \
+	docker-compose --env-file ../.env up -d
+
 runRedis:
 	docker network create redis-net || true
 	cd ./redis-service/ && \

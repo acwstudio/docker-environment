@@ -12,8 +12,8 @@ services:
       RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
       RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
     ports:
-      - ${{RABBIT_PORT}}:5672
-      - ${{RABBIT_MANAGEMENT_PORT}}:15672
+      - ${RABBIT_PORT}:5672
+      - ${RABBIT_MANAGEMENT_PORT}:15672
     networks:
       - rabbitmq-net
 

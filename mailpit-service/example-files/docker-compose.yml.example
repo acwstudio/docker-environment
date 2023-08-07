@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+# **** fake mailer
+  mailpit:
+    image: axllent/mailpit
+    container_name: ${APP_NAME}_mailpit
+
+    ports:
+      - "${MAILPIT_HTTP_PORT}:8025"
+      - "${MAILPIT_SMPT_PORT}:1025"
+    restart: unless-stopped
+    volumes:
+      - "./data:/data"
+    networks:
+      - mailpit
+
+# Networks
+networks:
+  mailpit:
+    external: true
